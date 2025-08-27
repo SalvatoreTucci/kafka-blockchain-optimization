@@ -1,0 +1,246 @@
+version: '3.8'
+
+networks:
+  kafka-blockchain-net:
+    driver: bridge
+
+volumes:
+  kafka-logs:
+  zk-data:
+  fabric-data:
+  prometheus-data:
+  grafana-data:
+
+services:
+  # Zookeeper for Kafka (3 nodes for HA)
+  zookeeper-1:
+    image: confluentinc/cp-zookeeper:7.4.0
+    hostname: zookeeper-1
+    container_name: zookeeper-1
+    networks:
+      - kafka-blockchain-net
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_SERVER_ID: 1
+      ZOOKEEPER_SERVERS: zookeeper-1:2888:3888;zookeeper-2:2888:3888;zookeeper-3:2888:3888
+    volumes:
+      - zk-data:/var/lib/zookeeper/data
+      
+  zookeeper-2:
+    image: confluentinc/cp-zookeeper:7.4.0
+    hostname: zookeeper-2
+    container_name: zookeeper-2
+    networks:
+      - kafka-blockchain-net
+    ports:
+      - "2182:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_SERVER_ID: 2
+      ZOOKEEPER_SERVERS: zookeeper-1:2888:3888;zookeeper-2:2888:3888;zookeeper-3:2888:3888
+      
+  zookeeper-3:
+    image: confluentinc/cp-zookeeper:7.4.0
+    hostname: zookeeper-3
+    container_name: zookeeper-3
+    networks:
+      - kafka-blockchain-net
+    ports:
+      - "2183:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_SERVER_ID: 3
+      ZOOKEEPER_SERVERS: zookeeper-1:2888:3888;zookeeper-2:2888:3888;zookeeper-3:2888:3888
+
+  # Kafka brokers (3 nodes, configurable parameters)
+  kafka-1:
+    image: confluentinc/cp-kafka:7.4.0
+    hostname: kafka-1
+    container_name: kafka-1
+    networks:
+      - kafka-blockchain-net
+    ports:
+      - "9092:9092"
+      - "19092:19092"
+    depends_on:
+      - zookeeper-1
+      - zookeeper-2
+      - zookeeper-3
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper-1:2181,zookeeper-2:2181,zookeeper-3:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-1:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092,PLAINTEXT_HOST://0.0.0.0:9092
+      
+      # DEFAULT CONFIG (baseline) - will be overridden by optimization scripts
+      KAFKA_BATCH_SIZE: 16384                    # 16KB default
+      KAFKA_LINGER_MS: 0                         # No batching delay
+      KAFKA_COMPRESSION_TYPE: none               # No compression
+      KAFKA_NUM_NETWORK_THREADS: 3               # Default network threads
+      KAFKA_NUM_IO_THREADS: 8                    # Default I/O threads
+      KAFKA_BUFFER_MEMORY: 33554432              # 32MB buffer
+      
+      # Blockchain-specific requirements
+      KAFKA_ACKS: all
+      KAFKA_RETRIES: 2147483647
+      KAFKA_ENABLE_IDEMPOTENCE: 'true'
+      KAFKA_MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION: 1
+      
+      # Replication settings
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 3
+      KAFKA_MIN_INSYNC_REPLICAS: 2
+      KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE: 'false'
+      
+      # Monitoring
+      KAFKA_JMX_PORT: 19092
+      KAFKA_JMX_HOSTNAME: kafka-1
+      
+    volumes:
+      - kafka-logs:/var/lib/kafka/data
+      - ./configs:/configs
+      - ./scripts:/scripts
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Additional Kafka brokers (kafka-2, kafka-3) follow similar pattern...
+  
+  # Hyperledger Fabric Peer
+  peer0-org1:
+    image: hyperledger/fabric-peer:2.5
+    hostname: peer0-org1
+    container_name: peer0-org1
+    networks:
+      - kafka-blockchain-net
+    ports:
+      - "7051:7051"
+    environment:
+      CORE_PEER_ID: peer0-org1
+      CORE_PEER_ADDRESS: peer0-org1:7051
+      CORE_PEER_LOCALMSPID: Org1MSP
+      CORE_PEER_MSPCONFIGPATH: /etc/hyperledger/fabric/msp
+      CORE_VM_ENDPOINT: unix:///host/var/run/docker.sock
+      CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE: kafka-blockchain-optimization_kafka-blockchain-net
+      FABRIC_LOGGING_SPEC: INFO
+      CORE_PEER_TLS_ENABLED: false
+    volumes:
+      - /var/run/:/host/var/run/
+      - ./docker/fabric/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
+      - fabric-data:/var/hyperledger/production
+    depends_on:
+      - kafka-1
+
+  # Hyperledger Fabric Orderer (Kafka-based)
+  orderer:
+    image: hyperledger/fabric-orderer:2.5
+    hostname: orderer
+    container_name: orderer
+    networks:
+      - kafka-blockchain-net
+    ports:
+      - "7050:7050"
+    environment:
+      FABRIC_LOGGING_SPEC: INFO
+      ORDERER_GENERAL_LISTENADDRESS: 0.0.0.0
+      ORDERER_GENERAL_LISTENPORT: 7050
+      ORDERER_GENERAL_GENESISMETHOD: file
+      ORDERER_GENERAL_GENESISFILE: /var/hyperledger/orderer/orderer.genesis.block
+      ORDERER_GENERAL_LOCALMSPID: OrdererMSP
+      ORDERER_GENERAL_LOCALMSPDIR: /var/hyperledger/orderer/msp
+      ORDERER_GENERAL_TLS_ENABLED: false
+      
+      # Kafka configuration
+      ORDERER_KAFKA_BROKERS: '[kafka-1:29092,kafka-2:29092,kafka-3:29092]'
+      ORDERER_KAFKA_TOPIC_REPLICATIONFACTOR: 3
+    volumes:
+      - ./docker/fabric/channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - ./docker/fabric/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+
+  # Monitoring Stack
+  prometheus:
+    image: prom/prometheus:v2.45.0
+    hostname: prometheus
+    container_name: prometheus
+    networks:
+      - kafka-blockchain-net
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./configs/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+
+  grafana:
+    image: grafana/grafana:10.0.0
+    hostname: grafana
+    container_name: grafana
+    networks:
+      - kafka-blockchain-net
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./configs/monitoring/grafana-dashboards.json:/var/lib/grafana/dashboards/dashboards.json
+      - ./configs/monitoring/dashboard-provisioning.yml:/etc/grafana/provisioning/dashboards/dashboard-provisioning.yml
+
+  # JMX Exporter for Kafka metrics
+  kafka-exporter:
+    image: danielqsj/kafka-exporter:latest
+    hostname: kafka-exporter
+    container_name: kafka-exporter
+    networks:
+      - kafka-blockchain-net
+    ports:
+      - "9308:9308"
+    command: 
+      - '--kafka.server=kafka-1:29092'
+      - '--kafka.server=kafka-2:29092'
+      - '--kafka.server=kafka-3:29092'
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+
+  # Testing and automation container
+  test-runner:
+    build:
+      context: .
+      dockerfile: docker/base/Dockerfile.testing
+    hostname: test-runner
+    container_name: test-runner
+    networks:
+      - kafka-blockchain-net
+    volumes:
+      - ./scripts:/scripts
+      - ./configs:/configs
+      - ./results:/results
+      - ./src:/src
+    environment:
+      KAFKA_BROKERS: "kafka-1:29092,kafka-2:29092,kafka-3:29092"
+      FABRIC_PEER: "peer0-org1:7051"
+      FABRIC_ORDERER: "orderer:7050"
+    depends_on:
+      - kafka-1
+      - peer0-org1
+      - orderer
+    command: ["sleep", "infinity"]  # Keep container running for manual testing

@@ -1,0 +1,193 @@
+# Kafka Optimization Test Matrix
+# Based on literature review and performance-critical parameters
+
+metadata:
+  description: "Systematic Kafka parameter optimization for blockchain workloads"
+  baseline_source: "Default Kafka configs from reviewed papers"
+  success_criteria:
+    throughput: "> raft_baseline_tps"
+    cpu_efficiency: "< raft_cpu_usage * 0.9"  # Beat Raft's 35% advantage
+    latency_p95: "< baseline_latency * 1.2"   # Max 20% latency increase
+
+# Phase 1: Single Parameter Impact Testing
+single_parameters:
+  
+  # Batching - Critical for throughput
+  batch_size:
+    description: "Producer batching for throughput optimization"
+    baseline: 16384  # 16KB default
+    test_values: [32768, 65536, 131072, 262144]  # 32KB to 256KB
+    expected_impact: "↑ Throughput, ↑ Latency"
+    priority: "HIGH"
+    
+  linger_ms:
+    description: "Producer wait time for batch accumulation"
+    baseline: 0
+    test_values: [5, 10, 25, 50, 100]
+    expected_impact: "↑ Throughput, ↑ Latency"  
+    priority: "HIGH"
+    
+  # Compression - Network efficiency (Kafka's strength per Paper 3)
+  compression_type:
+    description: "Message compression algorithm"
+    baseline: "none"
+    test_values: ["snappy", "lz4", "gzip", "zstd"]
+    expected_impact: "↓ Network usage, ↑ CPU usage"
+    priority: "HIGH"
+    
+  # Network threads - Concurrent processing
+  num_network_threads:
+    description: "Network request handler threads"
+    baseline: 3
+    test_values: [6, 8, 12, 16, 24, 32]
+    expected_impact: "↑ Concurrent handling"
+    priority: "HIGH"
+    
+  # I/O threads - Disk operations
+  num_io_threads:
+    description: "Disk I/O handler threads"
+    baseline: 8
+    test_values: [12, 16, 24, 32, 48, 64]
+    expected_impact: "↑ Disk throughput"
+    priority: "MEDIUM"
+    
+  # Buffer management
+  buffer_memory:
+    description: "Producer buffer memory"
+    baseline: 33554432  # 32MB
+    test_values: [67108864, 134217728, 268435456]  # 64MB, 128MB, 256MB
+    expected_impact: "↑ Batching capacity"
+    priority: "MEDIUM"
+
+# Phase 2: Multi-Parameter Combinations
+# Based on best performers from Phase 1
+multi_parameter_configs:
+  
+  high_throughput_config:
+    description: "Optimized for maximum throughput"
+    parameters:
+      batch_size: 131072      # 128KB
+      linger_ms: 50
+      compression_type: "lz4"
+      num_network_threads: 16
+      buffer_memory: 134217728  # 128MB
+    expected_scenario: "High TPS, moderate latency"
+    
+  low_latency_config:
+    description: "Optimized for minimum latency"
+    parameters:
+      batch_size: 32768       # 32KB
+      linger_ms: 5
+      compression_type: "snappy"
+      num_network_threads: 24
+      buffer_memory: 67108864   # 64MB
+    expected_scenario: "Lower latency, moderate TPS"
+    
+  balanced_config:
+    description: "Balanced throughput and latency"
+    parameters:
+      batch_size: 65536       # 64KB
+      linger_ms: 25
+      compression_type: "lz4"
+      num_network_threads: 12
+      buffer_memory: 134217728  # 128MB
+    expected_scenario: "Good throughput and latency"
+    
+  resource_efficient_config:
+    description: "Optimized for resource efficiency"
+    parameters:
+      batch_size: 65536
+      linger_ms: 100          # Higher batching
+      compression_type: "zstd" # Best compression
+      num_network_threads: 8
+      buffer_memory: 67108864
+    expected_scenario: "Lower resource usage"
+
+# Phase 3: ML-Driven Optimization Parameters
+ml_optimization:
+  algorithm: "bayesian_optimization"
+  parameter_space:
+    batch_size: [16384, 262144]        # 16KB to 256KB
+    linger_ms: [0, 100]
+    compression_type: ["none", "snappy", "lz4", "gzip", "zstd"]
+    num_network_threads: [3, 32]
+    buffer_memory: [33554432, 268435456]  # 32MB to 256MB
+    
+  objective_function: "weighted_score"
+  weights:
+    throughput: 0.4
+    latency_p95: 0.3
+    cpu_efficiency: 0.2
+    network_efficiency: 0.1
+    
+  iterations: 50
+  initial_samples: 10
+
+# Blockchain-Specific Parameters
+blockchain_specific:
+  
+  # Ordering service requirements
+  ordering_service:
+    acks: "all"                          # Blockchain consistency requirement
+    retries: 2147483647                  # Integer.MAX_VALUE
+    enable_idempotence: true
+    max_in_flight_requests_per_connection: 1  # For strict ordering
+    
+  # Partition strategy for blockchain workloads
+  partitioning:
+    num_partitions_per_topic: [1, 3, 6, 12]  # Test partition impact
+    partition_assignment_strategy: ["RangeAssignor", "RoundRobinAssignor"]
+    
+  # Replication for fault tolerance
+  replication:
+    default_replication_factor: 3        # Maintain from Paper 3
+    min_insync_replicas: 2
+    unclean_leader_election_enable: false  # Consistency over availability
+
+# Baseline Validation
+baseline_configs:
+  
+  paper_2_raft_baseline:
+    description: "Raft configuration from Performance Evaluation paper"
+    consensus_algorithm: "raft"
+    block_size: 100
+    block_timeout: "3s"
+    hardware: "Intel Xeon E5-1603, 16GB RAM"
+    
+  paper_3_kafka_default:
+    description: "Default Kafka from Resource Analysis paper" 
+    consensus_algorithm: "kafka"
+    brokers: 4
+    zookeeper_nodes: 3
+    replication_factor: 3
+    # All other parameters at Kafka defaults
+    
+# Test Environment Specifications
+test_environment:
+  target_hardware:
+    cpu: "Intel Xeon equivalent, 8+ cores"
+    memory: "16GB+ RAM"
+    network: "Gigabit Ethernet minimum"
+    storage: "SSD recommended"
+    
+  fabric_network:
+    version: "2.2+"
+    organizations: 2
+    peers_per_org: 2
+    orderers: 3
+    channels: 1
+    
+  workload_patterns:
+    smallbank: 
+      description: "Standard OLTP benchmark from papers"
+      transaction_types: ["transfer", "balance", "deposit"]
+      load_pattern: "constant_rate"
+      
+    realistic_blockchain:
+      description: "Realistic blockchain transaction mix"
+      transaction_types: ["asset_transfer", "smart_contract", "query"]
+      load_pattern: "variable_rate"
+      
+  test_duration: "10_minutes_minimum"
+  warmup_period: "2_minutes" 
+  cooldown_period: "1_minute"

@@ -1,0 +1,33 @@
+{
+  "test_start": "2025-09-03T00:07:48.858892",
+  "configuration": "default",
+  "throughput": {
+    "producer": {
+      "messages_per_second": 288.35393051407704,
+      "total_messages": 500,
+      "duration_seconds": 1.7339801788330078,
+      "errors": 0
+    },
+    "consumer": {
+      "messages_per_second": 600.3016461728749,
+      "total_messages": 500,
+      "duration_seconds": 0.8329145908355713
+    }
+  },
+  "latency": {
+    "producer": {
+      "avg_ms": 3.4486961364746094,
+      "p95_ms": 4.8300981521606445,
+      "p99_ms": 6.051840782165527,
+      "min_ms": 2.399444580078125,
+      "max_ms": 10.279178619384766
+    },
+    "consumer": {
+      "avg_processing_ms": 1.1632070541381836,
+      "avg_end_to_end_ms": 6402.375203132629,
+      "p95_e2e_ms": 7180.275189876556
+    }
+  },
+  "errors": [],
+  "test_end": "2025-09-03T00:07:56.675379"
+}

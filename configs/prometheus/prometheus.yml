@@ -2,55 +2,22 @@ global:
   scrape_interval: 15s
   evaluation_interval: 15s
 
-rule_files:
-  # - "first_rules.yml"
-  # - "second_rules.yml"
-
 scrape_configs:
   # Prometheus self-monitoring
   - job_name: 'prometheus'
     static_configs:
       - targets: ['localhost:9090']
 
-  # Kafka JMX Metrics (via JMX Exporter)
+  # Kafka JMX Metrics via JMX Exporter
   - job_name: 'kafka-jmx'
     static_configs:
-      - targets: ['kafka1:9999', 'kafka2:9998', 'kafka3:9997']
+      - targets: ['jmx-exporter:5556']
     scrape_interval: 10s
     metrics_path: /metrics
 
-  # Kafka Exporter (high-level Kafka metrics)
-  - job_name: 'kafka-exporter'
+  # System metrics (if needed)
+  - job_name: 'kafka-container'
     static_configs:
-      - targets: ['kafka-exporter:9308']
-    scrape_interval: 10s
-
-  # Container metrics via cAdvisor
-  - job_name: 'cadvisor'
-    static_configs:
-      - targets: ['cadvisor:8080']
-    scrape_interval: 10s
-    metrics_path: /metrics
-
-  # Zookeeper metrics (if available)
-  - job_name: 'zookeeper'
-    static_configs:
-      - targets: ['zookeeper1:2181', 'zookeeper2:2182', 'zookeeper3:2183']
+      - targets: ['kafka:9092']
     scrape_interval: 15s
     metrics_path: /metrics
-
-  # Hyperledger Fabric peers (if metrics enabled)
-  - job_name: 'fabric-peers'
-    static_configs:
-      - targets: ['peer0.org1.example.com:9443', 'peer1.org1.example.com:9443', 'peer0.org2.example.com:9443', 'peer1.org2.example.com:9443']
-    scrape_interval: 15s
-    metrics_path: /metrics
-    scheme: http
-
-  # Hyperledger Fabric orderer
-  - job_name: 'fabric-orderer'
-    static_configs:
-      - targets: ['orderer.example.com:8443']
-    scrape_interval: 15s
-    metrics_path: /metrics
-    scheme: http

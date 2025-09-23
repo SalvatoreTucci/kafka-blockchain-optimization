@@ -1,0 +1,37 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Kafka JMX Metrics
+  - job_name: 'kafka'
+    static_configs:
+      - targets: ['kafka:9999']
+    scrape_interval: 10s
+    metrics_path: /metrics
+
+  # Fabric Orderer metrics
+  - job_name: 'fabric-orderer'
+    static_configs:
+      - targets: ['orderer:8443']
+    scrape_interval: 15s
+    metrics_path: /metrics
+
+  # Fabric Peers metrics
+  - job_name: 'fabric-peers'
+    static_configs:
+      - targets: ['peer0-org1:9444', 'peer0-org2:9445']
+    scrape_interval: 15s
+    metrics_path: /metrics
+
+  # System metrics if available
+  - job_name: 'containers'
+    static_configs:
+      - targets: ['kafka:9092', 'orderer:7050']
+    scrape_interval: 30s
+    metrics_path: /metrics

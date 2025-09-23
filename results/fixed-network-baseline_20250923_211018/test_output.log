@@ -1,0 +1,26 @@
+=== KAFKA NETWORK FIX TEST ===
+🔍 Testando connettività Kafka...
+   Provando server: ['kafka:9092']
+   ❌ Errore con ['kafka:9092']: KafkaTimeoutError: Timeout after waiting for 5 secs.
+   Provando server: ['kafka:29092']
+   ✅ Connessione riuscita con: ['kafka:29092']
+
+🚀 Test performance usando server: kafka:29092
+📤 Inviando 500 messaggi...
+   Sent: 100/500, Rate: 446.4 msgs/sec
+   Sent: 200/500, Rate: 443.6 msgs/sec
+   Sent: 300/500, Rate: 458.0 msgs/sec
+   Sent: 400/500, Rate: 471.6 msgs/sec
+   Sent: 500/500, Rate: 471.5 msgs/sec
+
+📊 RISULTATI TEST:
+   Server usato: kafka:29092
+   Messaggi inviati: 500/500
+   Tasso successo: 100.0%
+   Tempo totale: 1.06 secondi
+   Throughput medio: 471.3 msgs/sec
+   Errori: 0
+
+✅ Test completato!
+🎯 Baseline throughput: 471.3 msgs/sec
+📊 Success rate: 100.0%

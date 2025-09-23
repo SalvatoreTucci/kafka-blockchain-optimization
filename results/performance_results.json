@@ -1,0 +1,15 @@
+{
+  "kafka_server": "kafka:29092",
+  "total_messages_sent": 500,
+  "target_messages": 500,
+  "success_rate": 100.0,
+  "total_time": 0.9722192287445068,
+  "avg_throughput": 514.2872977792099,
+  "errors_count": 0,
+  "config": {
+    "batch_size": 16384,
+    "linger_ms": 0,
+    "compression": "none",
+    "buffer_memory": 33554432
+  }
+}

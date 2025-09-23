@@ -1,0 +1,17 @@
+{
+  "baseline": {
+    "messages_sent": 800,
+    "duration": 1.4022815227508545,
+    "throughput": 570.4988527771803
+  },
+  "optimized": {
+    "messages_sent": 800,
+    "duration": 42.710455894470215,
+    "throughput": 18.730776416357035
+  },
+  "comparison": {
+    "improvement_msgs_sec": -551.7680763608233,
+    "improvement_percentage": -96.71677229057065,
+    "conclusion": "INEFFECTIVE"
+  }
+}

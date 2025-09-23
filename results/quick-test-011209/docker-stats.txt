@@ -1,0 +1,4 @@
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK I/O   PIDS
+e86f4fe2409b   kafka1    0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
+3df5d963a310   kafka2    0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
+c4825e7c70ce   kafka3    0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0

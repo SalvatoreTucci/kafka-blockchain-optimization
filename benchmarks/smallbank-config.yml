@@ -1,0 +1,100 @@
+test:
+  name: Smallbank Benchmark - Kafka Optimization
+  description: >
+    Replicates Paper 2 and Paper 3 baseline testing for Kafka vs Raft comparison.
+    Tests smallbank workload with varying TPS to establish baseline performance.
+  workers:
+    type: local
+    number: 4
+
+monitors:
+  resource:
+    - module: prometheus
+      options:
+        url: "http://prometheus:9090"
+        metrics:
+          include: [cpu*, memory*, network*, disk*]
+        interval: 5
+
+  transaction:
+    - module: logging
+
+rounds:
+  # Phase 1: Warm-up (Paper replication methodology)
+  - label: warmup
+    description: "System warm-up phase - 60 seconds at low TPS"
+    txDuration: 60
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 50
+    workload:
+      module: benchmarks/workloads/smallbank.js
+      arguments:
+        money: 10000
+        accounts: 1000
+
+  # Phase 2: Baseline Load Test (Paper 2 configuration)  
+  - label: baseline-100tps
+    description: "Baseline test - 100 TPS for 10 minutes (Paper 2 setup)"
+    txDuration: 600
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 100
+    workload:
+      module: benchmarks/workloads/smallbank.js
+      arguments:
+        money: 10000
+        accounts: 1000
+
+  # Phase 3: Medium Load Test
+  - label: medium-250tps
+    description: "Medium load test - 250 TPS for 10 minutes"
+    txDuration: 600
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 250
+    workload:
+      module: benchmarks/workloads/smallbank.js
+      arguments:
+        money: 10000
+        accounts: 1000
+
+  # Phase 4: High Load Test (Paper 3 stress testing)
+  - label: high-500tps
+    description: "High load test - 500 TPS for 10 minutes (Paper 3 setup)"
+    txDuration: 600
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 500
+    workload:
+      module: benchmarks/workloads/smallbank.js
+      arguments:
+        money: 10000
+        accounts: 1000
+
+  # Phase 5: Peak Load Test 
+  - label: peak-1000tps
+    description: "Peak load test - 1000 TPS for 5 minutes"
+    txDuration: 300
+    rateControl:
+      type: fixed-rate
+      opts:
+        tps: 1000
+    workload:
+      module: benchmarks/workloads/smallbank.js
+      arguments:
+        money: 10000
+        accounts: 1000
+
+# Block configuration to match Paper experiments
+blockchain:
+  orderer:
+    batch_size:
+      max_message_count: 100
+      absolute_max_bytes: 99MB
+      preferred_max_bytes: 512KB
+    batch_timeout: 2s

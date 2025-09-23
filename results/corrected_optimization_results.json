@@ -1,0 +1,13 @@
+{
+  "baseline": {
+    "messages_sent": 600,
+    "duration": 1.1132819652557373,
+    "throughput": 538.9470221608873,
+    "config": {
+      "bootstrap_servers": [
+        "kafka:29092"
+      ],
+      "batch_size": 16384,
+      "linger_ms": 0,
+      "buffer_memory": 33554432,
+      "value_serializer": 

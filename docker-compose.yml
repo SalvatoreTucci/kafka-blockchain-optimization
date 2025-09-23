@@ -1,5 +1,3 @@
-version: '3.8'
-
 networks:
   kafka-net:
     driver: bridge
@@ -11,7 +9,7 @@ volumes:
   grafana-data:
 
 services:
-  # Zookeeper (single node for starting simple)
+  # Zookeeper con configurazione Windows-friendly
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
     hostname: zookeeper
@@ -23,11 +21,18 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+      ZOOKEEPER_SYNC_LIMIT: 2
     volumes:
       - zk-data:/var/lib/zookeeper/data
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "sh", "-c", "echo srvr | nc localhost 2181"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
 
-  # Kafka broker (single node initially)
+  # Kafka con configurazione ottimizzata per Windows
   kafka:
     image: confluentinc/cp-kafka:7.4.0
     hostname: kafka
@@ -38,7 +43,8 @@ services:
       - "9092:9092"
       - "9094:9094"
     depends_on:
-      - zookeeper
+      zookeeper:
+        condition: service_healthy
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
@@ -49,62 +55,68 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-      
-      # Producer configs (these need different names)
-      KAFKA_PRODUCER_BATCH_SIZE: 16384
-      KAFKA_PRODUCER_LINGER_MS: 0
-      KAFKA_PRODUCER_COMPRESSION_TYPE: none
-      KAFKA_PRODUCER_BUFFER_MEMORY: 33554432
-      
-      # Server configs
-      KAFKA_NUM_NETWORK_THREADS: 3
-      KAFKA_NUM_IO_THREADS: 8
-      
-      # Blockchain requirements
-      KAFKA_PRODUCER_ACKS: all
-      KAFKA_PRODUCER_RETRIES: 2147483647
-      KAFKA_PRODUCER_ENABLE_IDEMPOTENCE: 'true'
-      KAFKA_PRODUCER_MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION: 1
-      
-      # Monitoring
       KAFKA_JMX_PORT: 9094
-      KAFKA_JMX_HOSTNAME: kafka
+      KAFKA_JMX_HOSTNAME: localhost
+      
+      # Configurazione Windows-friendly
+      KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+      KAFKA_LOG4J_ROOT_LOGLEVEL: INFO
+      
+      # Memory settings per Windows
+      KAFKA_HEAP_OPTS: "-Xmx512M -Xms512M"
       
     volumes:
       - kafka-data:/var/lib/kafka/data
-      - ./configs:/configs
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      test: ["CMD", "kafka-topics", "--bootstrap-server", "localhost:9092", "--list"]
       interval: 30s
-      timeout: 10s
+      timeout: 15s
       retries: 5
+      start_period: 60s
 
-  # Prometheus for metrics
+  # Test runner con Python e dependencies
+  test-runner:
+    image: python:3.9-slim
+    container_name: test-runner
+    networks:
+      - kafka-net
+    depends_on:
+      kafka:
+        condition: service_healthy
+    volumes:
+      - .:/workspace
+      - ./results:/workspace/results
+    working_dir: /workspace
+    command: |
+      sh -c "
+      apt-get update && apt-get install -y netcat-traditional curl &&
+      pip install kafka-python==2.0.2 requests==2.31.0 &&
+      tail -f /dev/null
+      "
+    restart: unless-stopped
+
+  # Prometheus (opzionale per ora)
   prometheus:
-    image: prom/prometheus:v2.45.0
-    hostname: prometheus
+    image: prom/prometheus:latest
     container_name: prometheus
     networks:
       - kafka-net
     ports:
       - "9090:9090"
     volumes:
-      - ./configs/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus-data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
       - '--web.console.libraries=/etc/prometheus/console_libraries'
       - '--web.console.templates=/etc/prometheus/consoles'
-      - '--storage.tsdb.retention.time=200h'
       - '--web.enable-lifecycle'
     restart: unless-stopped
 
-  # Grafana for visualization
+  # Grafana (opzionale per ora)
   grafana:
-    image: grafana/grafana:10.0.0
-    hostname: grafana
+    image: grafana/grafana:latest
     container_name: grafana
     networks:
       - kafka-net
@@ -114,42 +126,4 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin123
     volumes:
       - grafana-data:/var/lib/grafana
-    restart: unless-stopped
-
-  # JMX Exporter for Kafka metrics
-  jmx-exporter:
-    image: sscaling/jmx-prometheus-exporter:latest
-    hostname: jmx-exporter
-    container_name: jmx-exporter
-    networks:
-      - kafka-net
-    ports:
-      - "8080:8080"
-    environment:
-      - CONFIG_YML=/etc/jmx_exporter/config.yml
-    volumes:
-      - ./configs/monitoring/jmx_exporter_config.yml:/etc/jmx_exporter/config.yml:ro
-    depends_on:
-      - kafka
-    restart: unless-stopped
-
-  # Test runner container
-  test-runner:
-    build:
-      context: .
-      dockerfile: docker/base/Dockerfile.test
-    hostname: test-runner
-    container_name: test-runner
-    networks:
-      - kafka-net
-    volumes:
-      - ./scripts:/scripts
-      - ./configs:/configs  
-      - ./results:/results
-      - ./src:/src
-    environment:
-      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
-    depends_on:
-      - kafka
-    command: ["sleep", "infinity"]
     restart: unless-stopped

@@ -1,0 +1,8 @@
+=== KAFKA OPTIMIZED CONFIGURATION TEST ===
+🔧 Configurazione Ottimizzata:
+   Batch Size: 65,536 bytes (4x baseline)
+   Linger: 50 ms (batching enabled)
+   Compression: lz4 (network efficient)
+   Buffer: 67,108,864 bytes (2x baseline)
+
+❌ Errore test ottimizzato: Libraries for lz4 compression codec not found

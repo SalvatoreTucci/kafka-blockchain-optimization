@@ -1,25 +1,29 @@
 #!/bin/bash
 
-# Simplified environment setup for Kafka performance testing
-# No blockchain complexity - focus on Kafka optimization
+# Hybrid environment setup for Kafka optimization with blockchain validation
+# Combines Kafka performance testing with real blockchain implementation
 
 set -e
 
-echo "Setting up Simplified Kafka Performance Testing Environment..."
+echo "Setting up Hybrid Kafka-Blockchain Environment..."
 
 # Create directory structure
 echo "Creating directory structure..."
 mkdir -p configs/{prometheus,grafana/{provisioning/datasources,dashboards}}
-mkdir -p benchmarks
-mkdir -p results/{baseline,optimized}
+mkdir -p blockchain-config/{orderer,org1/peer0,org2/peer0}
+mkdir -p chaincodes/simple-ledger
 mkdir -p scripts
+mkdir -p results/{baseline,optimized,hybrid}
+
+# Call blockchain setup
+echo "Setting up blockchain components..."
+./scripts/setup-blockchain.sh
 
 # Create environment files
 echo "Creating environment configuration files..."
 
 # Default configuration (Paper 3 baseline)
 cat > .env.default << 'EOF'
-# Kafka Default Configuration (Paper 3 Baseline)
 KAFKA_BATCH_SIZE=16384
 KAFKA_LINGER_MS=0
 KAFKA_COMPRESSION_TYPE=none
@@ -29,7 +33,6 @@ KAFKA_NUM_IO_THREADS=8
 KAFKA_SOCKET_SEND_BUFFER_BYTES=102400
 KAFKA_SOCKET_RECEIVE_BUFFER_BYTES=102400
 KAFKA_REPLICA_FETCH_MAX_BYTES=1048576
-
 TEST_NAME=default-baseline
 TEST_DURATION=300
 TEST_TPS=1000
@@ -37,7 +40,6 @@ EOF
 
 # Batch optimization
 cat > .env.batch-optimized << 'EOF'
-# Kafka Batch Size Optimization
 KAFKA_BATCH_SIZE=65536
 KAFKA_LINGER_MS=10
 KAFKA_COMPRESSION_TYPE=none
@@ -47,7 +49,6 @@ KAFKA_NUM_IO_THREADS=16
 KAFKA_SOCKET_SEND_BUFFER_BYTES=204800
 KAFKA_SOCKET_RECEIVE_BUFFER_BYTES=204800
 KAFKA_REPLICA_FETCH_MAX_BYTES=2097152
-
 TEST_NAME=batch-optimized
 TEST_DURATION=300
 TEST_TPS=1000
@@ -55,7 +56,6 @@ EOF
 
 # Compression optimization
 cat > .env.compression-optimized << 'EOF'
-# Kafka Compression Optimization
 KAFKA_BATCH_SIZE=32768
 KAFKA_LINGER_MS=5
 KAFKA_COMPRESSION_TYPE=snappy
@@ -65,7 +65,6 @@ KAFKA_NUM_IO_THREADS=32
 KAFKA_SOCKET_SEND_BUFFER_BYTES=409600
 KAFKA_SOCKET_RECEIVE_BUFFER_BYTES=409600
 KAFKA_REPLICA_FETCH_MAX_BYTES=4194304
-
 TEST_NAME=compression-optimized
 TEST_DURATION=300
 TEST_TPS=1000
@@ -73,7 +72,6 @@ EOF
 
 # High throughput optimization
 cat > .env.high-throughput << 'EOF'
-# Kafka High Throughput Optimization
 KAFKA_BATCH_SIZE=262144
 KAFKA_LINGER_MS=100
 KAFKA_COMPRESSION_TYPE=lz4
@@ -83,72 +81,17 @@ KAFKA_NUM_IO_THREADS=32
 KAFKA_SOCKET_SEND_BUFFER_BYTES=819200
 KAFKA_SOCKET_RECEIVE_BUFFER_BYTES=819200
 KAFKA_REPLICA_FETCH_MAX_BYTES=8388608
-
 TEST_NAME=high-throughput
 TEST_DURATION=300
 TEST_TPS=2000
 EOF
 
-# Create health check script
-cat > scripts/health-check-simple.sh << 'EOF'
+# Create test suite runner
+cat > scripts/run-hybrid-suite.sh << 'EOF'
 #!/bin/bash
 
-echo "Checking simplified Kafka environment health..."
-
-echo "=== Container Status ==="
-docker-compose ps
-
-echo -e "\n=== Kafka Status ==="
-if docker exec kafka kafka-broker-api-versions --bootstrap-server localhost:9092 > /dev/null 2>&1; then
-    echo "✓ Kafka is responsive"
-else
-    echo "✗ Kafka not responding"
-fi
-
-echo -e "\n=== Topics ==="
-docker exec kafka kafka-topics --list --bootstrap-server localhost:9092 2>/dev/null || echo "No topics yet"
-
-echo -e "\n=== Web Interfaces ==="
-echo "Grafana: http://localhost:3000 (admin/admin)"
-echo "Prometheus: http://localhost:9090"
-EOF
-
-# Create quick test script
-cat > scripts/quick-simple-test.sh << 'EOF'
-#!/bin/bash
-
-echo "=== Quick Kafka Test ==="
-
-# Start environment
-echo "Starting simplified environment..."
-docker-compose up -d
-
-# Wait for readiness
-echo "Waiting for services..."
-sleep 30
-
-# Create test topic
-echo "Creating test topic..."
-docker exec kafka kafka-topics --create --topic quick-test --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1 2>/dev/null || echo "Topic exists"
-
-# Quick producer test
-echo "Running quick producer test..."
-docker exec kafka kafka-producer-perf-test \
-    --topic quick-test \
-    --num-records 10000 \
-    --record-size 1024 \
-    --throughput 1000 \
-    --producer-props bootstrap.servers=localhost:9092
-
-echo "✓ Quick test completed"
-echo "Environment ready for full testing"
-EOF
-
-# Create full test suite script
-cat > scripts/run-full-suite.sh << 'EOF'
-#!/bin/bash
-
-echo "=== Running Full Kafka Optimization Test Suite ==="
+echo "=== Running Complete Hybrid Test Suite ==="
+echo "This tests Kafka optimization + blockchain validation"
 
 CONFIGS=(".env.default" ".env.batch-optimized" ".env.compression-optimized" ".env.high-throughput")
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
@@ -158,65 +101,155 @@ for config in "${CONFIGS[@]}"; do
     echo "Testing configuration: $config"
     echo "======================================="
     
-    # Run test
-    ./scripts/simple-kafka-test.sh "$config" "${config#.env.}-${TIMESTAMP}" 300 1000
+    # Run hybrid test
+    ./scripts/hybrid-full-test.sh "$config" "${config#.env.}-hybrid-${TIMESTAMP}"
     
     # Wait between tests
-    echo "Waiting 30 seconds before next test..."
-    sleep 30
+    echo "Waiting 60 seconds before next test..."
+    sleep 60
 done
 
-echo "=== Full test suite completed ==="
-echo "Results in: results/*-${TIMESTAMP}/"
+echo "=== Complete test suite finished ==="
+echo "Results in: results/*-hybrid-${TIMESTAMP}/"
+
+# Generate comparison report
+echo "Generating comparison report..."
+python3 scripts/compare-hybrid-results.py results/ "*-hybrid-${TIMESTAMP}"
+EOF
+
+# Create comparison script
+cat > scripts/compare-hybrid-results.py << 'EOF'
+#!/usr/bin/env python3
+"""
+Compare multiple hybrid test results
+"""
+
+import os
+import sys
+import glob
+from pathlib import Path
+import re
+
+def parse_hybrid_report(report_file):
+    """Parse hybrid test report file"""
+    data = {}
+    
+    with open(report_file, 'r') as f:
+        content = f.read()
+    
+    # Extract key metrics
+    producer_match = re.search(r'Producer Throughput:\s+([\d.]+)', content)
+    latency_match = re.search(r'Average Latency:\s+([\d.]+)', content)
+    blocks_match = re.search(r'Blocks Created:\s+(\d+)', content)
+    
+    data['producer_tps'] = float(producer_match.group(1)) if producer_match else 0
+    data['avg_latency'] = float(latency_match.group(1)) if latency_match else 0
+    data['blocks_created'] = int(blocks_match.group(1)) if blocks_match else 0
+    
+    # Extract configuration
+    config_section = re.search(r'KAFKA CONFIGURATION TESTED:(.*?)KAFKA PERFORMANCE', content, re.DOTALL)
+    if config_section:
+        config_text = config_section.group(1)
+        batch_match = re.search(r'Batch Size:\s+(\d+)', config_text)
+        linger_match = re.search(r'Linger Time:\s+(\d+)', config_text)
+        compression_match = re.search(r'Compression:\s+(\w+)', config_text)
+        
+        data['batch_size'] = int(batch_match.group(1)) if batch_match else 0
+        data['linger_ms'] = int(linger_match.group(1)) if linger_match else 0
+        data['compression'] = compression_match.group(1) if compression_match else 'none'
+    
+    return data
+
+def main():
+    if len(sys.argv) < 3:
+        print("Usage: python3 compare-hybrid-results.py <results_dir> <pattern>")
+        sys.exit(1)
+    
+    results_dir = sys.argv[1]
+    pattern = sys.argv[2]
+    
+    # Find all matching result directories
+    search_pattern = os.path.join(results_dir, f"*{pattern}*")
+    result_dirs = glob.glob(search_pattern)
+    
+    if not result_dirs:
+        print(f"No results found matching pattern: {pattern}")
+        sys.exit(1)
+    
+    print("HYBRID TEST RESULTS COMPARISON")
+    print("=" * 50)
+    
+    results = []
+    
+    for result_dir in sorted(result_dirs):
+        report_file = os.path.join(result_dir, 'hybrid-test-report.txt')
+        if os.path.exists(report_file):
+            config_name = os.path.basename(result_dir).split('-hybrid-')[0]
+            data = parse_hybrid_report(report_file)
+            data['config_name'] = config_name
+            results.append(data)
+    
+    if not results:
+        print("No valid reports found")
+        sys.exit(1)
+    
+    # Print comparison table
+    print(f"{'Config':<20} {'TPS':<10} {'Latency(ms)':<12} {'Blocks':<8} {'Batch':<10} {'Linger':<8} {'Compression':<12}")
+    print("-" * 90)
+    
+    for result in results:
+        print(f"{result['config_name']:<20} "
+              f"{result['producer_tps']:<10.0f} "
+              f"{result['avg_latency']:<12.1f} "
+              f"{result['blocks_created']:<8} "
+              f"{result['batch_size']:<10} "
+              f"{result['linger_ms']:<8} "
+              f"{result['compression']:<12}")
+    
+    # Find best configuration
+    best_tps = max(results, key=lambda x: x['producer_tps'])
+    best_latency = min(results, key=lambda x: x['avg_latency'])
+    
+    print("\nBEST PERFORMERS:")
+    print(f"Highest TPS: {best_tps['config_name']} ({best_tps['producer_tps']:.0f} TPS)")
+    print(f"Lowest Latency: {best_latency['config_name']} ({best_latency['avg_latency']:.1f} ms)")
+    
+    # Paper comparison
+    default_result = next((r for r in results if 'default' in r['config_name']), None)
+    if default_result:
+        print(f"\nCOMPARISON WITH PAPER 3 BASELINE:")
+        print(f"Default Configuration: {default_result['producer_tps']:.0f} TPS")
+        print(f"Paper 3 Target: 1000 TPS")
+        
+        if default_result['producer_tps'] >= 1000:
+            improvement = ((default_result['producer_tps'] - 1000) / 1000) * 100
+            print(f"Result: +{improvement:.1f}% vs target")
+        else:
+            gap = ((1000 - default_result['producer_tps']) / 1000) * 100
+            print(f"Gap: -{gap:.1f}% vs target")
+
+if __name__ == "__main__":
+    main()
 EOF
 
 # Make scripts executable
-chmod +x scripts/*.sh
+chmod +x scripts/*.sh scripts/*.py
 
-# Create cleanup script
-cat > scripts/cleanup-simple.sh << 'EOF'
-#!/bin/bash
-
-echo "Cleaning up simplified Kafka environment..."
-
-# Stop containers
-docker-compose down
-
-# Optional: clean volumes
-if [ "$1" = "volumes" ]; then
-    echo "Cleaning volumes..."
-    docker-compose down -v
-fi
-
-# Clean unused containers
-docker container prune -f
-
-echo "Cleanup completed!"
-EOF
-
-chmod +x scripts/cleanup-simple.sh
-
-echo "✓ Simplified environment setup completed!"
-echo ""
-echo "Files created:"
-echo "  - docker-compose.yml (simplified)"
-echo "  - .env.* (4 test configurations)"
-echo "  - configs/ (Prometheus, Grafana, JMX)"
-echo "  - scripts/ (testing and analysis tools)"
-echo ""
-echo "Next steps:"
-echo "1. Test basic setup:"
-echo "   ./scripts/quick-simple-test.sh"
-echo ""
-echo "2. Run single configuration test:"
-echo "   ./scripts/simple-kafka-test.sh .env.default test1"
-echo ""
-echo "3. Run full test suite:"
-echo "   ./scripts/run-full-suite.sh"
-echo ""
-echo "4. Analyze results:"
-echo "   python3 scripts/analyze-simple-results.py results/test1/"
-echo ""
-echo "5. View dashboards:"
-echo "   Grafana: http://localhost:3000 (admin/admin)"
-echo "   Prometheus: http://localhost:9090"
+echo "✓ Hybrid environment setup completed!"
+echo
+echo "Complete setup includes:"
+echo "  - Kafka optimization testing"
+echo "  - Blockchain validation with Hyperledger Fabric"
+echo "  - Monitoring (Prometheus + Grafana)"
+echo "  - 4 pre-configured test scenarios"
+echo
+echo "Available commands:"
+echo "1. Quick Kafka test:     ./scripts/simple-kafka-test.sh .env.default"
+echo "2. Blockchain validation: ./scripts/blockchain-test.sh .env.default"
+echo "3. Hybrid test:          ./scripts/hybrid-full-test.sh .env.default"
+echo "4. Complete suite:       ./scripts/run-hybrid-suite.sh"
+echo "5. Compare results:      python3 scripts/compare-hybrid-results.py results/ pattern"
+echo
+echo "Monitoring:"
+echo "  Grafana: http://localhost:3000 (admin/admin)"
+echo "  Prometheus: http://localhost:9090"

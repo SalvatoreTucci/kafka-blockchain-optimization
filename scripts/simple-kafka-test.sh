@@ -60,6 +60,31 @@ wait_for_service() {
     return 1
 }
 
+# Function to check blockchain readiness
+wait_for_blockchain() {
+    echo -e "${YELLOW}Checking blockchain components...${NC}"
+    
+    # Check if orderer is creating blocks
+    for i in {1..30}; do
+        if docker logs orderer 2>&1 | grep -q "Beginning to serve requests\|Starting orderer"; then
+            echo -e "${GREEN}✓ Orderer is ready${NC}"
+            break
+        fi
+        echo -n "."
+        sleep 3
+    done
+    
+    # Check if peers are ready
+    for i in {1..20}; do
+        if docker logs peer0-org1 2>&1 | grep -q "Starting peer\|Peer started"; then
+            echo -e "${GREEN}✓ Peers are ready${NC}"
+            break
+        fi
+        echo -n "."
+        sleep 2
+    done
+}
+
 # Stop existing containers and start fresh
 echo -e "${YELLOW}Starting Kafka environment...${NC}"
 docker-compose down > /dev/null 2>&1

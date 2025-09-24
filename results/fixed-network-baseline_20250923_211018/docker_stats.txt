@@ -1,6 +1,0 @@
-CONTAINER ID   NAME          CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O         PIDS
-95a95802290f   grafana       0.69%     80.53MiB / 7.434GiB   1.06%     20.5MB / 284kB    0B / 87MB         22
-99831633164e   test-runner   0.01%     35.93MiB / 7.434GiB   0.47%     17.7MB / 868kB    0B / 69.4MB       2
-79cfa4b6e9b8   prometheus    0.00%     29.22MiB / 7.434GiB   0.38%     1.25kB / 126B     0B / 319kB        20
-e7a1e03f0c5d   kafka         1.84%     365.8MiB / 7.434GiB   4.81%     645kB / 258kB     12.4MB / 3.63MB   88
-656f7bd57801   zookeeper     0.24%     99.09MiB / 7.434GiB   1.30%     45.8kB / 31.3kB   2.47MB / 1.17MB   81

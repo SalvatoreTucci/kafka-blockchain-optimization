@@ -1,0 +1,21 @@
+Kafka Performance Test Results
+==============================
+Test Name: high-throughput
+Start Time: 2025-09-24T21:15:49+02:00
+Duration: 120 seconds
+Target TPS: 1000
+
+Configuration Used:
+KAFKA_BATCH_SIZE=131072
+KAFKA_LINGER_MS=20
+KAFKA_COMPRESSION_TYPE=snappy
+KAFKA_BUFFER_MEMORY=134217728
+KAFKA_NUM_NETWORK_THREADS=6
+KAFKA_NUM_IO_THREADS=12
+
+Test Environment:
+- Single Kafka Broker
+- Single Zookeeper
+- 3 Partitions Topic
+- Replication Factor: 1
+Test completed at: 2025-09-24T21:16:04+02:00

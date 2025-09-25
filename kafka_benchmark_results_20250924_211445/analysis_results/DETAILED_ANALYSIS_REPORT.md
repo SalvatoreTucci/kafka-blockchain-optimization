@@ -1,6 +1,6 @@
 # Kafka Benchmark Detailed Analysis Report
 
-**Generated**: 2025-09-24 21:24:05  
+**Generated**: 2025-09-25 01:31:32  
 **Total Tests Analyzed**: 5
 
 ## Executive Summary

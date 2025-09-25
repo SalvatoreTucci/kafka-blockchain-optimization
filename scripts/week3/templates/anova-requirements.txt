@@ -1,0 +1,21 @@
+# Python Dependencies for Week 3 Factorial Design Analysis
+# Install with: pip3 install -r anova-requirements.txt --user
+
+# Data manipulation and analysis
+pandas>=1.3.0
+numpy>=1.21.0
+
+# Statistical analysis
+scipy>=1.7.0
+statsmodels>=0.13.0
+
+# Visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+
+# Optional: Enhanced plotting
+plotly>=5.0.0
+
+# Development utilities (optional)
+jupyter>=1.0.0
+ipython>=7.0.0

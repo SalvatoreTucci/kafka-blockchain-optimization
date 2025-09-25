@@ -1,0 +1,115 @@
+Factorial Design Execution Log - Started at gio 25 set 2025 09:55:09
+Starting configuration config_000 at gio 25 set 2025 09:55:10
+Attempting run 1 for config_000
+Starting test config_000_run1_20250925_095508 at gio 25 set 2025 09:55:10
+Test config_000_run1_20250925_095508 completed successfully at gio 25 set 2025 09:55:38
+Run 1 successful for config_000
+Attempting run 2 for config_000
+Starting test config_000_run2_20250925_095508 at gio 25 set 2025 09:55:58
+Test config_000_run2_20250925_095508 completed successfully at gio 25 set 2025 09:56:25
+Run 2 successful for config_000
+Attempting run 3 for config_000
+Starting test config_000_run3_20250925_095508 at gio 25 set 2025 09:56:45
+Test config_000_run3_20250925_095508 completed successfully at gio 25 set 2025 09:57:11
+Run 3 successful for config_000
+Configuration config_000 completed with 3/3 successful runs
+Starting configuration config_001 at gio 25 set 2025 09:57:42
+Attempting run 1 for config_001
+Starting test config_001_run1_20250925_095508 at gio 25 set 2025 09:57:42
+Test config_001_run1_20250925_095508 completed successfully at gio 25 set 2025 09:58:09
+Run 1 successful for config_001
+Attempting run 2 for config_001
+Starting test config_001_run2_20250925_095508 at gio 25 set 2025 09:58:29
+Test config_001_run2_20250925_095508 completed successfully at gio 25 set 2025 09:58:55
+Run 2 successful for config_001
+Attempting run 3 for config_001
+Starting test config_001_run3_20250925_095508 at gio 25 set 2025 09:59:16
+Test config_001_run3_20250925_095508 completed successfully at gio 25 set 2025 09:59:42
+Run 3 successful for config_001
+Configuration config_001 completed with 3/3 successful runs
+Starting configuration config_010 at gio 25 set 2025 10:00:13
+Attempting run 1 for config_010
+Starting test config_010_run1_20250925_095508 at gio 25 set 2025 10:00:13
+Test config_010_run1_20250925_095508 completed successfully at gio 25 set 2025 10:00:39
+Run 1 successful for config_010
+Attempting run 2 for config_010
+Starting test config_010_run2_20250925_095508 at gio 25 set 2025 10:00:59
+Test config_010_run2_20250925_095508 completed successfully at gio 25 set 2025 10:01:27
+Run 2 successful for config_010
+Attempting run 3 for config_010
+Starting test config_010_run3_20250925_095508 at gio 25 set 2025 10:01:47
+Test config_010_run3_20250925_095508 completed successfully at gio 25 set 2025 10:02:14
+Run 3 successful for config_010
+Configuration config_010 completed with 3/3 successful runs
+Starting configuration config_011 at gio 25 set 2025 10:02:44
+Attempting run 1 for config_011
+Starting test config_011_run1_20250925_095508 at gio 25 set 2025 10:02:45
+Test config_011_run1_20250925_095508 completed successfully at gio 25 set 2025 10:03:13
+Run 1 successful for config_011
+Attempting run 2 for config_011
+Starting test config_011_run2_20250925_095508 at gio 25 set 2025 10:03:33
+Test config_011_run2_20250925_095508 completed successfully at gio 25 set 2025 10:04:00
+Run 2 successful for config_011
+Attempting run 3 for config_011
+Starting test config_011_run3_20250925_095508 at gio 25 set 2025 10:04:20
+Test config_011_run3_20250925_095508 completed successfully at gio 25 set 2025 10:04:48
+Run 3 successful for config_011
+Configuration config_011 completed with 3/3 successful runs
+Starting configuration config_100 at gio 25 set 2025 10:05:18
+Attempting run 1 for config_100
+Starting test config_100_run1_20250925_095508 at gio 25 set 2025 10:05:18
+Test config_100_run1_20250925_095508 completed successfully at gio 25 set 2025 10:05:44
+Run 1 successful for config_100
+Attempting run 2 for config_100
+Starting test config_100_run2_20250925_095508 at gio 25 set 2025 10:06:05
+Test config_100_run2_20250925_095508 completed successfully at gio 25 set 2025 10:06:31
+Run 2 successful for config_100
+Attempting run 3 for config_100
+Starting test config_100_run3_20250925_095508 at gio 25 set 2025 10:06:51
+Test config_100_run3_20250925_095508 completed successfully at gio 25 set 2025 10:07:18
+Run 3 successful for config_100
+Configuration config_100 completed with 3/3 successful runs
+Starting configuration config_101 at gio 25 set 2025 10:07:49
+Attempting run 1 for config_101
+Starting test config_101_run1_20250925_095508 at gio 25 set 2025 10:07:49
+Test config_101_run1_20250925_095508 completed successfully at gio 25 set 2025 10:08:15
+Run 1 successful for config_101
+Attempting run 2 for config_101
+Starting test config_101_run2_20250925_095508 at gio 25 set 2025 10:08:35
+Test config_101_run2_20250925_095508 completed successfully at gio 25 set 2025 10:09:02
+Run 2 successful for config_101
+Attempting run 3 for config_101
+Starting test config_101_run3_20250925_095508 at gio 25 set 2025 10:09:23
+Test config_101_run3_20250925_095508 completed successfully at gio 25 set 2025 10:09:50
+Run 3 successful for config_101
+Configuration config_101 completed with 3/3 successful runs
+Starting configuration config_110 at gio 25 set 2025 10:10:20
+Attempting run 1 for config_110
+Starting test config_110_run1_20250925_095508 at gio 25 set 2025 10:10:20
+Test config_110_run1_20250925_095508 completed successfully at gio 25 set 2025 10:10:47
+Run 1 successful for config_110
+Attempting run 2 for config_110
+Starting test config_110_run2_20250925_095508 at gio 25 set 2025 10:11:07
+Test config_110_run2_20250925_095508 completed successfully at gio 25 set 2025 10:11:33
+Run 2 successful for config_110
+Attempting run 3 for config_110
+Starting test config_110_run3_20250925_095508 at gio 25 set 2025 10:11:53
+Test config_110_run3_20250925_095508 completed successfully at gio 25 set 2025 10:12:20
+Run 3 successful for config_110
+Configuration config_110 completed with 3/3 successful runs
+Starting configuration config_111 at gio 25 set 2025 10:12:50
+Attempting run 1 for config_111
+Starting test config_111_run1_20250925_095508 at gio 25 set 2025 10:12:50
+Test config_111_run1_20250925_095508 completed successfully at gio 25 set 2025 10:13:17
+Run 1 successful for config_111
+Attempting run 2 for config_111
+Starting test config_111_run2_20250925_095508 at gio 25 set 2025 10:13:37
+Test config_111_run2_20250925_095508 completed successfully at gio 25 set 2025 10:14:03
+Run 2 successful for config_111
+Attempting run 3 for config_111
+Starting test config_111_run3_20250925_095508 at gio 25 set 2025 10:14:23
+Test config_111_run3_20250925_095508 completed successfully at gio 25 set 2025 10:14:50
+Run 3 successful for config_111
+Configuration config_111 completed with 3/3 successful runs
+Total test directories created: 24
+Factorial Design completed at gio 25 set 2025 10:14:50 with 24 test directories created

@@ -1,0 +1,2 @@
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O         BLOCK I/O         PIDS
+3ec8ad5a0d67   kafka     1.76%     979.7MiB / 7.434GiB   12.87%    384kB / 607kB   2.04MB / 1.13GB   155

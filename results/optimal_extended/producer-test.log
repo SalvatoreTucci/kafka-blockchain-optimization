@@ -1,0 +1,10 @@
+5002 records sent, 1000.2 records/sec (0.98 MB/sec), 4.3 ms avg latency, 381.0 ms max latency.
+5002 records sent, 999.8 records/sec (0.98 MB/sec), 1.1 ms avg latency, 4.0 ms max latency.
+5004 records sent, 1000.6 records/sec (0.98 MB/sec), 1.1 ms avg latency, 4.0 ms max latency.
+5000 records sent, 999.8 records/sec (0.98 MB/sec), 1.1 ms avg latency, 4.0 ms max latency.
+5002 records sent, 1000.4 records/sec (0.98 MB/sec), 1.1 ms avg latency, 4.0 ms max latency.
+5001 records sent, 1000.0 records/sec (0.98 MB/sec), 1.0 ms avg latency, 2.0 ms max latency.
+5001 records sent, 1000.2 records/sec (0.98 MB/sec), 1.1 ms avg latency, 4.0 ms max latency.
+5001 records sent, 1000.2 records/sec (0.98 MB/sec), 1.1 ms avg latency, 5.0 ms max latency.
+5002 records sent, 1000.0 records/sec (0.98 MB/sec), 1.0 ms avg latency, 2.0 ms max latency.
+50000 records sent, 999.740068 records/sec (0.98 MB/sec), 1.39 ms avg latency, 381.00 ms max latency, 1 ms 50th, 2 ms 95th, 4 ms 99th, 47 ms 99.9th.

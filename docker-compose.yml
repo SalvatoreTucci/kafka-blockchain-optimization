@@ -32,7 +32,7 @@ services:
       retries: 5
       start_period: 30s
 
-  # Kafka con configurazione ottimizzata per Windows
+  # Kafka SEMPLICE (senza configurazioni problematiche)
   kafka:
     image: confluentinc/cp-kafka:7.4.0
     hostname: kafka
@@ -96,7 +96,7 @@ services:
       "
     restart: unless-stopped
 
-  # Prometheus (opzionale per ora)
+  # Prometheus (opzionale)
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
@@ -114,7 +114,7 @@ services:
       - '--web.enable-lifecycle'
     restart: unless-stopped
 
-  # Grafana (opzionale per ora)
+  # Grafana (opzionale)
   grafana:
     image: grafana/grafana:latest
     container_name: grafana

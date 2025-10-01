@@ -1,0 +1,21 @@
+Kafka Performance Test Results
+==============================
+Test Name: baseline
+Start Time: 2025-10-02T00:42:14+02:00
+Duration: 120 seconds
+Target TPS: 1000
+
+Configuration Used:
+KAFKA_BATCH_SIZE=16384
+KAFKA_LINGER_MS=0
+KAFKA_COMPRESSION_TYPE=none
+KAFKA_BUFFER_MEMORY=33554432
+KAFKA_NUM_NETWORK_THREADS=3
+KAFKA_NUM_IO_THREADS=8
+
+Test Environment:
+- Single Kafka Broker
+- Single Zookeeper
+- 3 Partitions Topic
+- Replication Factor: 1
+Test completed at: 2025-10-02T00:42:29+02:00

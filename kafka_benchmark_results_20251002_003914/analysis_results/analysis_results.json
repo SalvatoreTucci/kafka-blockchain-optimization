@@ -1,0 +1,299 @@
+{
+  "baseline": {
+    "test_name": "baseline",
+    "status": "SUCCESS",
+    "producer_metrics": {
+      "total_records": 12000,
+      "throughput_records_sec": 999.50025,
+      "throughput_mb_sec": 0.98,
+      "avg_latency_ms": 1.87,
+      "max_latency_ms": 340.0,
+      "p50_latency_ms": 1.0,
+      "p95_latency_ms": 2.0,
+      "p99_latency_ms": 23.0,
+      "p99_9_latency_ms": 32.0,
+      "batch_records": [
+        5000,
+        5004,
+        12000
+      ],
+      "batch_rates": [
+        1000.0,
+        1000.8,
+        999.50025
+      ],
+      "batch_latencies": [
+        2.8,
+        1.2,
+        1.87
+      ]
+    },
+    "consumer_metrics": {
+      "data_consumed_mb": 11.7549,
+      "mb_per_sec": 23.9407,
+      "messages_consumed": 12037,
+      "msg_per_sec": 24515.2749,
+      "rebalance_time_ms": 303.0,
+      "fetch_time_ms": 188.0,
+      "fetch_mb_sec": 62.526,
+      "fetch_msg_sec": 64026.5957
+    },
+    "config": {
+      "KAFKA_BATCH_SIZE": "16384",
+      "KAFKA_LINGER_MS": "0",
+      "KAFKA_COMPRESSION_TYPE": "none",
+      "KAFKA_BUFFER_MEMORY": "33554432",
+      "KAFKA_NUM_NETWORK_THREADS": "3",
+      "KAFKA_NUM_IO_THREADS": "8",
+      "KAFKA_SOCKET_SEND_BUFFER_BYTES": "102400",
+      "KAFKA_SOCKET_RECEIVE_BUFFER_BYTES": "102400",
+      "KAFKA_REPLICA_FETCH_MAX_BYTES": "1048576",
+      "TEST_NAME": "baseline",
+      "TEST_DURATION": "120",
+      "TEST_TPS": "1000"
+    },
+    "resource_usage": {
+      "cpu_percent": 1.36,
+      "memory_mb": 504.3,
+      "memory_limit_gb": 7.434,
+      "memory_percent": 6.62
+    }
+  },
+  "batch-optimized": {
+    "test_name": "batch-optimized",
+    "status": "SUCCESS",
+    "producer_metrics": {
+      "total_records": 12000,
+      "throughput_records_sec": 999.50025,
+      "throughput_mb_sec": 0.98,
+      "avg_latency_ms": 4.92,
+      "max_latency_ms": 301.0,
+      "p50_latency_ms": 5.0,
+      "p95_latency_ms": 8.0,
+      "p99_latency_ms": 14.0,
+      "p99_9_latency_ms": 24.0,
+      "batch_records": [
+        4996,
+        5008,
+        12000
+      ],
+      "batch_rates": [
+        999.0,
+        1000.4,
+        999.50025
+      ],
+      "batch_latencies": [
+        5.4,
+        4.6,
+        4.92
+      ]
+    },
+    "consumer_metrics": {
+      "data_consumed_mb": 11.7549,
+      "mb_per_sec": 24.1373,
+      "messages_consumed": 12037,
+      "msg_per_sec": 24716.6324,
+      "rebalance_time_ms": 297.0,
+      "fetch_time_ms": 190.0,
+      "fetch_mb_sec": 61.8678,
+      "fetch_msg_sec": 63352.6316
+    },
+    "config": {
+      "KAFKA_BATCH_SIZE": "65536",
+      "KAFKA_LINGER_MS": "5",
+      "KAFKA_COMPRESSION_TYPE": "none",
+      "KAFKA_BUFFER_MEMORY": "67108864",
+      "KAFKA_NUM_NETWORK_THREADS": "3",
+      "KAFKA_NUM_IO_THREADS": "8",
+      "KAFKA_SOCKET_SEND_BUFFER_BYTES": "131072",
+      "KAFKA_SOCKET_RECEIVE_BUFFER_BYTES": "131072",
+      "KAFKA_REPLICA_FETCH_MAX_BYTES": "2097152",
+      "TEST_NAME": "batch-optimized",
+      "TEST_DURATION": "120",
+      "TEST_TPS": "1000"
+    },
+    "resource_usage": {
+      "cpu_percent": 2.51,
+      "memory_mb": 477.1,
+      "memory_limit_gb": 7.434,
+      "memory_percent": 6.27
+    }
+  },
+  "compression": {
+    "test_name": "compression",
+    "status": "SUCCESS",
+    "producer_metrics": {
+      "total_records": 12000,
+      "throughput_records_sec": 999.167361,
+      "throughput_mb_sec": 0.98,
+      "avg_latency_ms": 14.29,
+      "max_latency_ms": 540.0,
+      "p50_latency_ms": 8.0,
+      "p95_latency_ms": 14.0,
+      "p99_latency_ms": 177.0,
+      "p99_9_latency_ms": 187.0,
+      "batch_records": [
+        4990,
+        5010,
+        12000
+      ],
+      "batch_rates": [
+        997.8,
+        1000.4,
+        999.167361
+      ],
+      "batch_latencies": [
+        24.1,
+        7.3,
+        14.29
+      ]
+    },
+    "consumer_metrics": {
+      "data_consumed_mb": 11.7188,
+      "mb_per_sec": 11.7188,
+      "messages_consumed": 12000,
+      "msg_per_sec": 12000.0,
+      "rebalance_time_ms": 323.0,
+      "fetch_time_ms": 677.0,
+      "fetch_mb_sec": 17.3098,
+      "fetch_msg_sec": 17725.2585
+    },
+    "config": {
+      "KAFKA_BATCH_SIZE": "32768",
+      "KAFKA_LINGER_MS": "10",
+      "KAFKA_COMPRESSION_TYPE": "lz4",
+      "KAFKA_BUFFER_MEMORY": "67108864",
+      "KAFKA_NUM_NETWORK_THREADS": "4",
+      "KAFKA_NUM_IO_THREADS": "8",
+      "KAFKA_SOCKET_SEND_BUFFER_BYTES": "131072",
+      "KAFKA_SOCKET_RECEIVE_BUFFER_BYTES": "131072",
+      "KAFKA_REPLICA_FETCH_MAX_BYTES": "2097152",
+      "TEST_NAME": "compression",
+      "TEST_DURATION": "120",
+      "TEST_TPS": "1000"
+    },
+    "resource_usage": {
+      "cpu_percent": 1.92
+    }
+  },
+  "high-throughput": {
+    "test_name": "high-throughput",
+    "status": "SUCCESS",
+    "producer_metrics": {
+      "total_records": 12000,
+      "throughput_records_sec": 999.417007,
+      "throughput_mb_sec": 0.98,
+      "avg_latency_ms": 13.39,
+      "max_latency_ms": 342.0,
+      "p50_latency_ms": 13.0,
+      "p95_latency_ms": 23.0,
+      "p99_latency_ms": 39.0,
+      "p99_9_latency_ms": 49.0,
+      "batch_records": [
+        4990,
+        5017,
+        12000
+      ],
+      "batch_rates": [
+        996.0,
+        1000.2,
+        999.417007
+      ],
+      "batch_latencies": [
+        14.6,
+        12.6,
+        13.39
+      ]
+    },
+    "consumer_metrics": {
+      "data_consumed_mb": 11.7549,
+      "mb_per_sec": 23.6517,
+      "messages_consumed": 12037,
+      "msg_per_sec": 24219.3159,
+      "rebalance_time_ms": 306.0,
+      "fetch_time_ms": 191.0,
+      "fetch_mb_sec": 61.5439,
+      "fetch_msg_sec": 63020.9424
+    },
+    "config": {
+      "KAFKA_BATCH_SIZE": "131072",
+      "KAFKA_LINGER_MS": "20",
+      "KAFKA_COMPRESSION_TYPE": "snappy",
+      "KAFKA_BUFFER_MEMORY": "134217728",
+      "KAFKA_NUM_NETWORK_THREADS": "6",
+      "KAFKA_NUM_IO_THREADS": "12",
+      "KAFKA_SOCKET_SEND_BUFFER_BYTES": "262144",
+      "KAFKA_SOCKET_RECEIVE_BUFFER_BYTES": "262144",
+      "KAFKA_REPLICA_FETCH_MAX_BYTES": "4194304",
+      "TEST_NAME": "high-throughput",
+      "TEST_DURATION": "120",
+      "TEST_TPS": "1500"
+    },
+    "resource_usage": {
+      "cpu_percent": 1.66,
+      "memory_mb": 471.7,
+      "memory_limit_gb": 7.434,
+      "memory_percent": 6.2
+    }
+  },
+  "low-latency": {
+    "test_name": "low-latency",
+    "status": "SUCCESS",
+    "producer_metrics": {
+      "total_records": 12000,
+      "throughput_records_sec": 999.50025,
+      "throughput_mb_sec": 0.98,
+      "avg_latency_ms": 3.69,
+      "max_latency_ms": 304.0,
+      "p50_latency_ms": 1.0,
+      "p95_latency_ms": 3.0,
+      "p99_latency_ms": 85.0,
+      "p99_9_latency_ms": 110.0,
+      "batch_records": [
+        5000,
+        5003,
+        12000
+      ],
+      "batch_rates": [
+        1000.0,
+        1000.4,
+        999.50025
+      ],
+      "batch_latencies": [
+        7.2,
+        1.1,
+        3.69
+      ]
+    },
+    "consumer_metrics": {
+      "data_consumed_mb": 11.7549,
+      "mb_per_sec": 19.1448,
+      "messages_consumed": 12037,
+      "msg_per_sec": 19604.2345,
+      "rebalance_time_ms": 379.0,
+      "fetch_time_ms": 235.0,
+      "fetch_mb_sec": 50.0208,
+      "fetch_msg_sec": 51221.2766
+    },
+    "config": {
+      "KAFKA_BATCH_SIZE": "1024",
+      "KAFKA_LINGER_MS": "0",
+      "KAFKA_COMPRESSION_TYPE": "none",
+      "KAFKA_BUFFER_MEMORY": "16777216",
+      "KAFKA_NUM_NETWORK_THREADS": "8",
+      "KAFKA_NUM_IO_THREADS": "16",
+      "KAFKA_SOCKET_SEND_BUFFER_BYTES": "65536",
+      "KAFKA_SOCKET_RECEIVE_BUFFER_BYTES": "65536",
+      "KAFKA_REPLICA_FETCH_MAX_BYTES": "524288",
+      "TEST_NAME": "low-latency",
+      "TEST_DURATION": "120",
+      "TEST_TPS": "800"
+    },
+    "resource_usage": {
+      "cpu_percent": 1.74,
+      "memory_mb": 530.3,
+      "memory_limit_gb": 7.434,
+      "memory_percent": 6.97
+    }
+  }
+}

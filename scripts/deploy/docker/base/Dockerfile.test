@@ -1,5 +1,0 @@
-FROM python:3.9-slim
-RUN apt-get update && apt-get install -y curl wget netcat-traditional && rm -rf /var/lib/apt/lists/*
-RUN pip install kafka-python==2.0.2 requests==2.31.0
-WORKDIR /workspace
-CMD ["bash"]

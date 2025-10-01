@@ -1,0 +1,54 @@
+Kafka Performance Test Summary
+==============================
+Test: high-throughput
+Date: gio  2 ott 2025 00:40:41
+Configuration: .env.high-throughput
+Status: COMPLETED SUCCESSFULLY
+
+=== Configuration Parameters ===
+Batch Size: 131072 bytes
+Linger Time: 20 ms
+Compression: snappy
+Buffer Memory: 134217728 bytes
+Network Threads: 6
+IO Threads: 12
+
+=== Performance Results ===
+Producer Throughput: 999.417007 records/sec
+Total Records Sent: 12000
+Average Latency: 13.39 ms
+Maximum Latency: 342.00 ms
+
+Consumer Throughput: N/A records/sec
+Consumer Data Rate: N/A MB/sec
+
+=== System Resources ===
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O         PIDS
+caf14e6921e9   kafka     1.66%     471.7MiB / 7.434GiB   6.20%     43.8MB / 971kB   1.16MB / 95.8MB   91
+
+=== Research Analysis ===
+This test establishes baseline performance with the specified configuration.
+Results can be compared with Paper 2/3 literature baselines (~1000 TPS target).
+
+Paper Comparison:
+- Target TPS: 1000 (Paper 2/3 baseline)
+- Measured TPS: 999.417007
+- Status: ✓ Good baseline established
+
+=== Files Generated ===
+- producer-test.log: Detailed producer performance metrics
+- consumer-test.log: Detailed consumer performance metrics
+- docker-stats.txt: System resource usage during test
+- topics.txt: Kafka topic information
+
+=== Next Steps ===
+1. If results look good: test optimized configurations
+2. Compare with optimizations: ./scripts/simple-kafka-test.sh .env.batch-optimized
+3. Run analysis: python3 scripts/analyze-simple-results.py results/high-throughput_20251002_003914
+4. Generate research findings
+
+=== Troubleshooting (if results are poor) ===
+- Increase Docker memory allocation (4GB+ recommended)
+- Check: docker stats (during test)
+- Check: docker-compose logs kafka
+- Try: docker-compose down -v && docker system prune -f

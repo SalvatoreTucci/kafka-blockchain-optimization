@@ -1,3 +1,0 @@
-WARNING: option [threads] and [num-fetch-threads] have been deprecated and will be ignored by the test
-start.time, end.time, data.consumed.in.MB, MB.sec, data.consumed.in.nMsg, nMsg.sec, rebalance.time.ms, fetch.time.ms, fetch.MB.sec, fetch.nMsg.sec
-2025-09-27 17:33:13:367, 2025-09-27 17:33:15:236, 29.2969, 15.6752, 30000, 16051.3644, 1065, 804, 36.4389, 37313.4328

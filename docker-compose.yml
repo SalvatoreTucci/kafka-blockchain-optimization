@@ -100,7 +100,9 @@ services:
         condition: service_healthy
     volumes:
       - .:/workspace
-      - ./results:/workspace/results
+      - ./results:/results
+      - ./scripts:/scripts
+      - ./configs:/configs 
     working_dir: /workspace
     command: |
       sh -c "

@@ -1,2 +1,0 @@
-CPU: 1.42%
-Memory: 403MiB / 7.434GiB

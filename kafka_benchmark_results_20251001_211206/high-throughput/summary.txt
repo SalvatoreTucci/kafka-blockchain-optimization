@@ -1,3 +1,0 @@
-Test: high-throughput
-Batch: 131072, Linger: 25ms
-5000 records sent, 3909.0 records/sec (3.82 MB/sec), 642.80 ms avg latency, 1242.22 ms max latency, 633 ms 50th, 1221 ms 95th, 1242 ms 99th, 1242 ms 99.9th.

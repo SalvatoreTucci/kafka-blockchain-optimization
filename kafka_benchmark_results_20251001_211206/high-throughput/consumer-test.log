@@ -1,2 +1,0 @@
-start.time, end.time, data.consumed.in.MB, MB.sec, data.consumed.in.nMsg, nMsg.sec, rebalance.time.ms, fetch.time.ms, fetch.MB.sec, fetch.nMsg.sec
-2025-01-01, 2025-01-01, 5.0, 2.5, 5000, 2500, 0, 2000, 2.5, 2500

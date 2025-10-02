@@ -1,6 +1,0 @@
-test_name,status,total_records,throughput_records_sec,throughput_mb_sec,avg_latency_ms,max_latency_ms,p50_latency_ms,p95_latency_ms,p99_latency_ms,p99_9_latency_ms,consumer_mb_sec,consumer_msg_sec,cpu_percent,memory_percent,batch_size,linger_ms,compression_type,buffer_memory
-baseline,SUCCESS,12000,999.250562,0.98,1.74,342.0,1.0,2.0,18.0,28.0,25.5641,26177.5899,1.48,7.35,16384,0,none,33554432
-batch-optimized,SUCCESS,12000,999.417007,0.98,4.77,362.0,5.0,7.0,16.0,28.0,20.2204,20705.6856,1.48,7.28,65536,5,none,67108864
-compression,SUCCESS,12000,999.333777,0.98,7.98,367.0,7.0,13.0,36.0,46.0,21.7088,22229.8025,1.41,7.06,32768,10,lz4,67108864
-high-throughput,SUCCESS,12000,999.417007,0.98,12.55,335.0,13.0,22.0,23.0,26.0,23.2535,23811.5385,1.32,7.27,131072,20,snappy,134217728
-low-latency,SUCCESS,12000,999.333777,0.98,4.86,313.0,1.0,3.0,126.0,148.0,14.4122,14758.0453,1.36,7.58,1024,0,none,16777216

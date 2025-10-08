@@ -1,0 +1,47 @@
+{
+  "config_name": "config_4_rep1",
+  "config": {
+    "batch_size": 16384,
+    "linger_ms": 25,
+    "compression_type": "lz4"
+  },
+  "test_timestamp": 1759876609.7924767,
+  "metrics": {
+    "transaction_submission": {
+      "total_transactions": 5000,
+      "confirmed_transactions": 5000,
+      "duration_seconds": 0.6264553070068359,
+      "throughput_tps": 7981.415344519445,
+      "avg_submission_time_ms": 300.8723494529724,
+      "p95_submission_time_ms": 547.7343201637268
+    },
+    "block_formation": {
+      "num_peers": 1,
+      "total_blocks_created": 50,
+      "total_transactions_processed": 5000,
+      "duration_seconds": 0.4396359920501709,
+      "avg_block_formation_time_ms": 1.787247657775879,
+      "avg_tx_finality_time_seconds": 0.008792719841003417,
+      "blocks_per_second": 113.73045179225008,
+      "peer_metrics": [
+        {
+          "peer_id": "peer0",
+          "blocks_created": 50,
+          "transactions_processed": 5000,
+          "chain_length": 51,
+          "avg_block_formation_time_ms": 1.787247657775879,
+          "pending_transactions": 0
+        }
+      ]
+    },
+    "end_to_end_latency": {
+      "num_samples": 100,
+      "avg_latency_ms": 129.35569286346436,
+      "p50_latency_ms": 129.12142276763916,
+      "p95_latency_ms": 130.30884265899658,
+      "p99_latency_ms": 0,
+      "min_latency_ms": 127.71987915039062,
+      "max_latency_ms": 147.30429649353027
+    }
+  }
+}

@@ -1,0 +1,3259 @@
+
+ACER@LAPTOP-NFCN97P0 MINGW64 ~/OneDrive/Desktop/kafkaBlockchainOptimization (main)
+$ ./week3-factorial-benchmark.sh
+╔════════════════════════════════════════════════════════╗
+║         WEEK 3 FACTORIAL DESIGN BENCHMARK             ║
+║              2³ Design with ANOVA                      ║
+╚════════════════════════════════════════════════════════╝
+Configuration:
+  Design: 2³ Full Factorial
+  Configurations: 8
+  Replications: 3
+  Total tests: 24
+  Transactions per test: 5000
+  Results directory: results/week3_factorial_design_20251003_022733
+
+
+Starting factorial design execution...
+
+═══════════════════════════════════════════════════════
+Configuration: config_1
+  Batch Size: 16384
+  Linger MS: 0
+  Compression: none
+═══════════════════════════════════════════════════════
+[Test 1/24] Replication 1/3
+
+▶ Testing: config_1_rep1
+  Batch: 16384, Linger: 0ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_1_REP1
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 0
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 6842.14 TPS
+  Avg Submission Time: 340.44 ms
+  P95 Submission Time: 632.40 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.89 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 110.64
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.66 ms
+  P50 Latency: 103.47 ms
+  P95 Latency: 104.50 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_1_rep1_1759451269.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_1_rep1_1759451269.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_1_rep1\config_1_rep1_result.json
+✓ Test completed: config_1_rep1
+[Test 2/24] Replication 2/3
+
+▶ Testing: config_1_rep2
+  Batch: 16384, Linger: 0ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_1_REP2
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 0
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 6907.30 TPS
+  Avg Submission Time: 321.43 ms
+  P95 Submission Time: 587.19 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.84 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 105.63
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.46 ms
+  P50 Latency: 103.33 ms
+  P95 Latency: 104.51 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_1_rep2_1759451292.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_1_rep2_1759451292.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_1_rep2\config_1_rep2_result.json
+✓ Test completed: config_1_rep2
+[Test 3/24] Replication 3/3
+
+▶ Testing: config_1_rep3
+  Batch: 16384, Linger: 0ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_1_REP3
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 0
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 6605.67 TPS
+  Avg Submission Time: 374.77 ms
+  P95 Submission Time: 712.43 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.79 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 111.79
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.47 ms
+  P50 Latency: 103.21 ms
+  P95 Latency: 104.71 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_1_rep3_1759451315.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_1_rep3_1759451315.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_1_rep3\config_1_rep3_result.json
+✓ Test completed: config_1_rep3
+═══════════════════════════════════════════════════════
+Configuration: config_2
+  Batch Size: 16384
+  Linger MS: 0
+  Compression: lz4
+═══════════════════════════════════════════════════════
+[Test 4/24] Replication 1/3
+
+▶ Testing: config_2_rep1
+  Batch: 16384, Linger: 0ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_2_REP1
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 0
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 7090.74 TPS
+  Avg Submission Time: 352.45 ms
+  P95 Submission Time: 601.07 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.77 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 113.63
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.63 ms
+  P50 Latency: 103.51 ms
+  P95 Latency: 104.68 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_2_rep1_1759451337.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_2_rep1_1759451337.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_2_rep1\config_2_rep1_result.json
+✓ Test completed: config_2_rep1
+[Test 5/24] Replication 2/3
+
+▶ Testing: config_2_rep2
+  Batch: 16384, Linger: 0ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_2_REP2
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 0
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 8183.35 TPS
+  Avg Submission Time: 296.79 ms
+  P95 Submission Time: 516.26 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.84 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 110.82
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.49 ms
+  P50 Latency: 103.35 ms
+  P95 Latency: 104.56 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_2_rep2_1759451360.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_2_rep2_1759451360.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_2_rep2\config_2_rep2_result.json
+✓ Test completed: config_2_rep2
+[Test 6/24] Replication 3/3
+
+▶ Testing: config_2_rep3
+  Batch: 16384, Linger: 0ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_2_REP3
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 0
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 7591.84 TPS
+  Avg Submission Time: 345.04 ms
+  P95 Submission Time: 620.80 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.83 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 90.87
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.66 ms
+  P50 Latency: 103.54 ms
+  P95 Latency: 104.62 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_2_rep3_1759451387.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_2_rep3_1759451387.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_2_rep3\config_2_rep3_result.json
+✓ Test completed: config_2_rep3
+═══════════════════════════════════════════════════════
+Configuration: config_3
+  Batch Size: 16384
+  Linger MS: 25
+  Compression: none
+═══════════════════════════════════════════════════════
+[Test 7/24] Replication 1/3
+
+▶ Testing: config_3_rep1
+  Batch: 16384, Linger: 25ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_3_REP1
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 25
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 6897.68 TPS
+  Avg Submission Time: 366.04 ms
+  P95 Submission Time: 680.32 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.91 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 111.93
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.86 ms
+  P50 Latency: 129.60 ms
+  P95 Latency: 130.78 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_3_rep1_1759451413.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_3_rep1_1759451413.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_3_rep1\config_3_rep1_result.json
+✓ Test completed: config_3_rep1
+[Test 8/24] Replication 2/3
+
+▶ Testing: config_3_rep2
+  Batch: 16384, Linger: 25ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_3_REP2
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 25
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 6726.21 TPS
+  Avg Submission Time: 359.72 ms
+  P95 Submission Time: 673.63 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 2.03 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 100.91
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.65 ms
+  P50 Latency: 129.39 ms
+  P95 Latency: 130.78 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_3_rep2_1759451438.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_3_rep2_1759451438.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_3_rep2\config_3_rep2_result.json
+✓ Test completed: config_3_rep2
+[Test 9/24] Replication 3/3
+
+▶ Testing: config_3_rep3
+  Batch: 16384, Linger: 25ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_3_REP3
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 25
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 6255.89 TPS
+  Avg Submission Time: 408.63 ms
+  P95 Submission Time: 736.30 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.93 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 109.51
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.34 ms
+  P50 Latency: 128.95 ms
+  P95 Latency: 130.90 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_3_rep3_1759451464.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_3_rep3_1759451464.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_3_rep3\config_3_rep3_result.json
+✓ Test completed: config_3_rep3
+═══════════════════════════════════════════════════════
+Configuration: config_4
+  Batch Size: 16384
+  Linger MS: 25
+  Compression: lz4
+═══════════════════════════════════════════════════════
+[Test 10/24] Replication 1/3
+
+▶ Testing: config_4_rep1
+  Batch: 16384, Linger: 25ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_4_REP1
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 25
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 8089.30 TPS
+  Avg Submission Time: 303.62 ms
+  P95 Submission Time: 515.63 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.83 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 108.24
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.58 ms
+  P50 Latency: 129.40 ms
+  P95 Latency: 130.60 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_4_rep1_1759451489.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_4_rep1_1759451489.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_4_rep1\config_4_rep1_result.json
+✓ Test completed: config_4_rep1
+[Test 11/24] Replication 2/3
+
+▶ Testing: config_4_rep2
+  Batch: 16384, Linger: 25ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_4_REP2
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 25
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 8011.36 TPS
+  Avg Submission Time: 315.88 ms
+  P95 Submission Time: 505.95 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.80 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 114.05
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.67 ms
+  P50 Latency: 129.50 ms
+  P95 Latency: 130.59 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_4_rep2_1759451514.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_4_rep2_1759451514.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_4_rep2\config_4_rep2_result.json
+✓ Test completed: config_4_rep2
+[Test 12/24] Replication 3/3
+
+▶ Testing: config_4_rep3
+  Batch: 16384, Linger: 25ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_4_REP3
+======================================================================
+Configuration:
+  Batch Size: 16384
+  Linger MS: 25
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 8195.35 TPS
+  Avg Submission Time: 299.89 ms
+  P95 Submission Time: 526.34 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.81 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 98.00
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.85 ms
+  P50 Latency: 129.48 ms
+  P95 Latency: 130.52 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_4_rep3_1759451539.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_4_rep3_1759451539.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_4_rep3\config_4_rep3_result.json
+✓ Test completed: config_4_rep3
+═══════════════════════════════════════════════════════
+Configuration: config_5
+  Batch Size: 131072
+  Linger MS: 0
+  Compression: none
+═══════════════════════════════════════════════════════
+[Test 13/24] Replication 1/3
+
+▶ Testing: config_5_rep1
+  Batch: 131072, Linger: 0ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_5_REP1
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 0
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 9231.87 TPS
+  Avg Submission Time: 273.14 ms
+  P95 Submission Time: 513.48 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.87 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 110.73
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.51 ms
+  P50 Latency: 103.34 ms
+  P95 Latency: 104.34 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_5_rep1_1759451562.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_5_rep1_1759451562.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_5_rep1\config_5_rep1_result.json
+✓ Test completed: config_5_rep1
+[Test 14/24] Replication 2/3
+
+▶ Testing: config_5_rep2
+  Batch: 131072, Linger: 0ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_5_REP2
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 0
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 8884.07 TPS
+  Avg Submission Time: 272.03 ms
+  P95 Submission Time: 524.14 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.79 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 111.74
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.48 ms
+  P50 Latency: 103.26 ms
+  P95 Latency: 104.91 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_5_rep2_1759451584.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_5_rep2_1759451584.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_5_rep2\config_5_rep2_result.json
+✓ Test completed: config_5_rep2
+[Test 15/24] Replication 3/3
+
+▶ Testing: config_5_rep3
+  Batch: 131072, Linger: 0ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_5_REP3
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 0
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 9265.64 TPS
+  Avg Submission Time: 259.43 ms
+  P95 Submission Time: 506.96 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.79 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 113.15
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.44 ms
+  P50 Latency: 103.26 ms
+  P95 Latency: 104.25 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_5_rep3_1759451607.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_5_rep3_1759451607.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_5_rep3\config_5_rep3_result.json
+✓ Test completed: config_5_rep3
+═══════════════════════════════════════════════════════
+Configuration: config_6
+  Batch Size: 131072
+  Linger MS: 0
+  Compression: lz4
+═══════════════════════════════════════════════════════
+[Test 16/24] Replication 1/3
+
+▶ Testing: config_6_rep1
+  Batch: 131072, Linger: 0ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_6_REP1
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 0
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 12494.12 TPS
+  Avg Submission Time: 198.64 ms
+  P95 Submission Time: 373.96 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.80 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 113.05
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.29 ms
+  P50 Latency: 103.20 ms
+  P95 Latency: 104.12 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_6_rep1_1759451629.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_6_rep1_1759451629.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_6_rep1\config_6_rep1_result.json
+✓ Test completed: config_6_rep1
+[Test 17/24] Replication 2/3
+
+▶ Testing: config_6_rep2
+  Batch: 131072, Linger: 0ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_6_REP2
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 0
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 11963.59 TPS
+  Avg Submission Time: 201.01 ms
+  P95 Submission Time: 384.67 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 2.08 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 103.88
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.50 ms
+  P50 Latency: 103.35 ms
+  P95 Latency: 104.67 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_6_rep2_1759451652.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_6_rep2_1759451652.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_6_rep2\config_6_rep2_result.json
+✓ Test completed: config_6_rep2
+[Test 18/24] Replication 3/3
+
+▶ Testing: config_6_rep3
+  Batch: 131072, Linger: 0ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_6_REP3
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 0
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 11618.01 TPS
+  Avg Submission Time: 207.74 ms
+  P95 Submission Time: 402.16 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.74 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 113.51
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 103.34 ms
+  P50 Latency: 103.21 ms
+  P95 Latency: 104.30 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_6_rep3_1759451674.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_6_rep3_1759451674.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_6_rep3\config_6_rep3_result.json
+✓ Test completed: config_6_rep3
+═══════════════════════════════════════════════════════
+Configuration: config_7
+  Batch Size: 131072
+  Linger MS: 25
+  Compression: none
+═══════════════════════════════════════════════════════
+[Test 19/24] Replication 1/3
+
+▶ Testing: config_7_rep1
+  Batch: 131072, Linger: 25ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_7_REP1
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 25
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 9864.69 TPS
+  Avg Submission Time: 248.09 ms
+  P95 Submission Time: 466.85 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.84 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 112.94
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.31 ms
+  P50 Latency: 129.24 ms
+  P95 Latency: 130.73 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_7_rep1_1759451699.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_7_rep1_1759451699.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_7_rep1\config_7_rep1_result.json
+✓ Test completed: config_7_rep1
+[Test 20/24] Replication 2/3
+
+▶ Testing: config_7_rep2
+  Batch: 131072, Linger: 25ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_7_REP2
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 25
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 9727.89 TPS
+  Avg Submission Time: 253.42 ms
+  P95 Submission Time: 473.45 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.78 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 105.92
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.14 ms
+  P50 Latency: 129.00 ms
+  P95 Latency: 130.33 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_7_rep2_1759451724.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_7_rep2_1759451724.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_7_rep2\config_7_rep2_result.json
+✓ Test completed: config_7_rep2
+[Test 21/24] Replication 3/3
+
+▶ Testing: config_7_rep3
+  Batch: 131072, Linger: 25ms, Compression: none
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_7_REP3
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 25
+  Compression: none
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 9375.08 TPS
+  Avg Submission Time: 263.21 ms
+  P95 Submission Time: 493.63 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.85 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 83.96
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.43 ms
+  P50 Latency: 129.13 ms
+  P95 Latency: 130.16 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_7_rep3_1759451749.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_7_rep3_1759451749.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_7_rep3\config_7_rep3_result.json
+✓ Test completed: config_7_rep3
+═══════════════════════════════════════════════════════
+Configuration: config_8
+  Batch Size: 131072
+  Linger MS: 25
+  Compression: lz4
+═══════════════════════════════════════════════════════
+[Test 22/24] Replication 1/3
+
+▶ Testing: config_8_rep1
+  Batch: 131072, Linger: 25ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_8_REP1
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 25
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 12447.87 TPS
+  Avg Submission Time: 196.11 ms
+  P95 Submission Time: 365.63 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.82 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 100.45
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.58 ms
+  P50 Latency: 129.48 ms
+  P95 Latency: 130.52 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_8_rep1_1759451774.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_8_rep1_1759451774.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_8_rep1\config_8_rep1_result.json
+✓ Test completed: config_8_rep1
+[Test 23/24] Replication 2/3
+
+▶ Testing: config_8_rep2
+  Batch: 131072, Linger: 25ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_8_REP2
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 25
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 11669.11 TPS
+  Avg Submission Time: 208.23 ms
+  P95 Submission Time: 387.67 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 1.84 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 72.50
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.34 ms
+  P50 Latency: 129.05 ms
+  P95 Latency: 130.38 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_8_rep2_1759451800.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_8_rep2_1759451800.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_8_rep2\config_8_rep2_result.json
+✓ Test completed: config_8_rep2
+[Test 24/24] Replication 3/3
+
+▶ Testing: config_8_rep3
+  Batch: 131072, Linger: 25ms, Compression: lz4
+Collecting enhanced stats for 60 seconds...
+
+======================================================================
+BLOCKCHAIN BENCHMARK: CONFIG_8_REP3
+======================================================================
+Configuration:
+  Batch Size: 131072
+  Linger MS: 25
+  Compression: lz4
+  Transactions: 5000
+
+======================================================================
+TEST 1: Transaction Submission (5000 transactions)
+======================================================================
+Submitting transactions...
+  Submitted 1000/5000
+  Submitted 2000/5000
+  Submitted 3000/5000
+  Submitted 4000/5000
+  Submitted 5000/5000
+Waiting for Kafka confirmations...
+
+Results:
+  Throughput: 12562.01 TPS
+  Avg Submission Time: 193.21 ms
+  P95 Submission Time: 367.44 ms
+
+======================================================================
+TEST 2: Block Formation (1 peer(s))
+======================================================================
+Processing transactions with 1 peer(s)...
+[Peer peer0] Created block 1 with 100 transactions
+[Peer peer0] Created block 2 with 100 transactions
+[Peer peer0] Created block 3 with 100 transactions
+[Peer peer0] Created block 4 with 100 transactions
+[Peer peer0] Created block 5 with 100 transactions
+[Peer peer0] Created block 6 with 100 transactions
+[Peer peer0] Created block 7 with 100 transactions
+[Peer peer0] Created block 8 with 100 transactions
+[Peer peer0] Created block 9 with 100 transactions
+[Peer peer0] Created block 10 with 100 transactions
+[Peer peer0] Created block 11 with 100 transactions
+[Peer peer0] Created block 12 with 100 transactions
+[Peer peer0] Created block 13 with 100 transactions
+[Peer peer0] Created block 14 with 100 transactions
+[Peer peer0] Created block 15 with 100 transactions
+[Peer peer0] Created block 16 with 100 transactions
+[Peer peer0] Created block 17 with 100 transactions
+[Peer peer0] Created block 18 with 100 transactions
+[Peer peer0] Created block 19 with 100 transactions
+[Peer peer0] Created block 20 with 100 transactions
+[Peer peer0] Created block 21 with 100 transactions
+[Peer peer0] Created block 22 with 100 transactions
+[Peer peer0] Created block 23 with 100 transactions
+[Peer peer0] Created block 24 with 100 transactions
+[Peer peer0] Created block 25 with 100 transactions
+[Peer peer0] Created block 26 with 100 transactions
+[Peer peer0] Created block 27 with 100 transactions
+[Peer peer0] Created block 28 with 100 transactions
+[Peer peer0] Created block 29 with 100 transactions
+[Peer peer0] Created block 30 with 100 transactions
+[Peer peer0] Created block 31 with 100 transactions
+[Peer peer0] Created block 32 with 100 transactions
+[Peer peer0] Created block 33 with 100 transactions
+[Peer peer0] Created block 34 with 100 transactions
+[Peer peer0] Created block 35 with 100 transactions
+[Peer peer0] Created block 36 with 100 transactions
+[Peer peer0] Created block 37 with 100 transactions
+[Peer peer0] Created block 38 with 100 transactions
+[Peer peer0] Created block 39 with 100 transactions
+[Peer peer0] Created block 40 with 100 transactions
+[Peer peer0] Created block 41 with 100 transactions
+[Peer peer0] Created block 42 with 100 transactions
+[Peer peer0] Created block 43 with 100 transactions
+[Peer peer0] Created block 44 with 100 transactions
+[Peer peer0] Created block 45 with 100 transactions
+[Peer peer0] Created block 46 with 100 transactions
+[Peer peer0] Created block 47 with 100 transactions
+[Peer peer0] Created block 48 with 100 transactions
+[Peer peer0] Created block 49 with 100 transactions
+[Peer peer0] Created block 50 with 100 transactions
+
+Results:
+  Blocks Created: 50
+  Transactions Processed: 5000
+  Avg Block Formation Time: 2.11 ms
+  Avg Transaction Finality: 0.01 seconds
+  Blocks/Second: 108.28
+
+======================================================================
+TEST 3: End-to-End Latency (100 samples)
+======================================================================
+Measuring end-to-end latency...
+[Peer latency_peer] Created block 1 with 10 transactions
+[Peer latency_peer] Created block 2 with 10 transactions
+[Peer latency_peer] Created block 3 with 10 transactions
+[Peer latency_peer] Created block 4 with 10 transactions
+[Peer latency_peer] Created block 5 with 10 transactions
+[Peer latency_peer] Created block 6 with 10 transactions
+[Peer latency_peer] Created block 7 with 10 transactions
+[Peer latency_peer] Created block 8 with 10 transactions
+[Peer latency_peer] Created block 9 with 10 transactions
+[Peer latency_peer] Created block 10 with 10 transactions
+  Measured 20/100 samples
+  Measured 40/100 samples
+  Measured 60/100 samples
+  Measured 80/100 samples
+  Measured 100/100 samples
+
+Results:
+  Avg E2E Latency: 129.55 ms
+  P50 Latency: 129.24 ms
+  P95 Latency: 130.34 ms
+  P99 Latency: 0.00 ms
+
+Results saved: /results/blockchain_config_8_rep3_1759451825.json
+
+======================================================================
+BENCHMARK COMPLETE
+======================================================================
+  Stopped stats collection
+  Looking for result file...
+  Found: /results/blockchain_config_8_rep3_1759451825.json
+Successfully copied 3.07kB to C:\Users\ACER\OneDrive\Desktop\kafkaBlockchainOptimization\results\week3_factorial_design_20251003_022733\config_8_rep3\config_8_rep3_result.json
+✓ Test completed: config_8_rep3
+./week3-factorial-benchmark.sh: line 156: warning: here-document at line 134 delimited by end-of-file (wanted `EOF')
+
+ACER@LAPTOP-NFCN97P0 MINGW64 ~/OneDrive/Desktop/kafkaBlockchainOptimization (main)
+$ python3 analyze_factorial_results.py ./results/week3_factorial_design_20251003_022733
+
+Starting factorial design analysis...
+Loading factorial design results...
+Found 24 result files
+Loaded 24 data points
+
+======================================================================
+ANOVA ANALYSIS - 2³ FACTORIAL DESIGN
+======================================================================
+
+======================================================================
+RESPONSE: THROUGHPUT_TPS
+======================================================================
+
+Grand Mean: 9020.87
+
+Main Effects:
+  A (batch_size):   +1737.80  F=3.78  p=0.0698 ns
+  B (linger_ms):    +131.00  F=0.02  p=0.8854 ns
+  C (compression):  +972.19  F=1.18  p=0.2931 ns
+
+Interaction Effects:
+  AB: +51.44  F=0.00  p=0.9548 ns
+  AC: +394.93  F=0.19  p=0.6647 ns
+  BC: +38.44  F=0.00  p=0.9662 ns
+  ABC: -120.34  F=0.02  p=0.8946 ns
+
+Model Statistics:
+  R² = 0.2452 (24.52% variance explained)
+  SS_model = 24940981.82
+  SS_error = 76788080.18
+  SS_total = 101729062.00
+
+======================================================================
+RESPONSE: AVG_LATENCY_MS
+======================================================================
+
+Grand Mean: 285.79
+
+Main Effects:
+  A (batch_size):   -54.60  F=3.90  p=0.0659 ns
+  B (linger_ms):    -1.12  F=0.00  p=0.9682 ns
+  C (compression):  -25.91  F=0.88  p=0.3629 ns
+
+Interaction Effects:
+  AB: -3.02  F=0.01  p=0.9143 ns
+  AC: -4.46  F=0.03  p=0.8739 ns
+  BC: -5.94  F=0.05  p=0.8327 ns
+  ABC: +8.44  F=0.09  p=0.7641 ns
+
+Model Statistics:
+  R² = 0.2364 (23.64% variance explained)
+  SS_model = 22736.51
+  SS_error = 73458.88
+  SS_total = 96195.39
+
+======================================================================
+RESPONSE: E2E_P95_MS
+======================================================================
+
+Grand Mean: 117.53
+
+Main Effects:
+  A (batch_size):   -0.11  F=0.00  p=0.9843 ns
+  B (linger_ms):    +13.02  F=5.33  p=0.0346 *
+  C (compression):  -0.04  F=0.00  p=0.9942 ns
+
+Interaction Effects:
+  AB: -0.03  F=0.00  p=0.9958 ns
+  AC: +0.01  F=0.00  p=0.9989 ns
+  BC: -0.02  F=0.00  p=0.9974 ns
+  ABC: +0.06  F=0.00  p=0.9923 ns
+
+Model Statistics:
+  R² = 0.2500 (25.00% variance explained)
+  SS_model = 1017.17
+  SS_error = 3052.16
+  SS_total = 4069.33
+
+Generating main effects plots...
+Saved: results\week3_factorial_design_20251003_022733\main_effects_plot.png
+
+Generating interaction plots...
+Saved: results\week3_factorial_design_20251003_022733\interaction_plots.png
+
+Generating ANOVA report...
+Report saved: results\week3_factorial_design_20251003_022733\FACTORIAL_ANALYSIS_REPORT.md
+
+======================================================================
+FACTORIAL ANALYSIS COMPLETE
+======================================================================
+
+All results saved in: results\week3_factorial_design_20251003_022733
